@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Anwar Cement Sheet – Product Catalogue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 11pt/1.5 "Manrope", Arial, sans-serif; color: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { width: 210mm; height: 297mm; padding: 16mm 16mm 14mm; position: relative; page-break-after: always; overflow: hidden; }
+    .page:last-child { page-break-after: auto; }
+    .red { color: #eb1d27; }
+    .eyebrow { font-size: 9pt; letter-spacing: .2em; text-transform: uppercase; font-weight: 800; color: #eb1d27; margin: 0 0 6px; }
+    h1 { font-size: 30pt; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 8px; }
+    h2 { font-size: 18pt; letter-spacing: -.01em; margin: 0 0 12px; }
+    h3 { font-size: 12pt; margin: 0 0 6px; }
+    p { margin: 0 0 8px; }
+    .muted { color: #5f6763; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand img { width: 46px; }
+    .brand strong { color: #eb1d27; font-size: 15pt; display: block; line-height: 1; }
+    .brand small { letter-spacing: .2em; font-size: 8pt; font-weight: 700; }
+    .cover { background: #111; color: #fff; }
+    .cover .brand strong { color: #fff; }
+    .cover-img { position: absolute; left: 0; right: 0; bottom: 0; height: 52%; background: url('assets/hero/hero-1.jpg') center/cover; }
+    .cover-img::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #111 0%, rgba(17,17,17,0) 60%); }
+    .cover h1 { font-size: 40pt; margin-top: 26mm; }
+    .cover .tag { display: inline-block; background: #eb1d27; padding: 6px 12px; border-radius: 4px; font-weight: 800; letter-spacing: .06em; margin-top: 10px; }
+    .stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 6mm; background: #eb1d27; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+    .card { border: 1px solid #e4e1da; border-radius: 8px; padding: 10px 12px; background: #fff; }
+    .card b { display: block; font-size: 12pt; }
+    .card small { color: #5f6763; }
+    .spec { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+    .spec div { padding: 8px 10px; background: #f7f4ee; border-radius: 6px; }
+    .spec small { display: block; font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: #5f6763; font-weight: 800; }
+    .spec b { font-size: 11pt; }
+    ul { margin: 0; padding-left: 16px; }
+    li { margin: 3px 0; }
+    .img { border-radius: 8px; background-size: cover; background-position: center; }
+    .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: -2px; margin-right: 4px; border: 1px solid #999; }
+    .foot { position: absolute; left: 16mm; right: 16mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 8.5pt; color: #5f6763; border-top: 1px solid #e4e1da; padding-top: 5px; }
+    .tbl { width: 100%; border-collapse: collapse; font-size: 10pt; }
+    .tbl th, .tbl td { border-bottom: 1px solid #e4e1da; padding: 6px 8px; text-align: left; }
+    .tbl th { background: #f7f4ee; font-size: 8.5pt; letter-spacing: .1em; text-transform: uppercase; }
+    .cta { background: #eb1d27; color: #fff; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; margin-top: 8mm; }
+    .cta b { font-size: 14pt; display: block; }
+  </style>
+</head>
+<body>
+
+<!-- Cover -->
+<section class="page cover">
+  <div class="stripe"></div>
+  <div class="brand"><img src="assets/logo-512.png" alt=""><div><strong>ANWAR</strong><small>CEMENT SHEET</small></div></div>
+  <h1>Product<br>Catalogue</h1>
+  <p style="font-size:13pt;color:#d9dedb;max-width:120mm">Fibre cement roofing for homes, farms and industry across Bangladesh. Built for heat, rain and storm.</p>
+  <span class="tag">2026 EDITION</span>
+  <div class="cover-img"></div>
+</section>
+
+<!-- Products -->
+<section class="page">
+  <div class="stripe"></div>
+  <p class="eyebrow">Our products</p>
+  <h2>Anwar Cement Sheet</h2>
+  <div class="grid2">
+    <div>
+      <div class="img" style="aspect-ratio:1/1;background-image:url('assets/cat-farm.jpg')"></div>
+    </div>
+    <div>
+      <h3>Product description</h3>
+      <div class="spec">
+        <div><small>Thickness</small><b>4 mm</b></div>
+        <div><small>Construction</small><b>6-layered</b></div>
+        <div style="grid-column:1/-1"><small>Available sizes</small><b>2, 3, 4, 5, 6, 7, 8, 9, 10 RFT</b></div>
+        <div style="grid-column:1/-1"><small>Colour</small><b>Natural grey</b></div>
+      </div>
+      <h3 style="margin-top:10px">Advantages</h3>
+      <ul>
+        <li>Rust, rot &amp; corrosion free</li>
+        <li>6-layered cement sheet</li>
+        <li>Temperature reduction up to 12°C</li>
+        <li>Resistant to chemical attacks</li>
+        <li>Excellent noise &amp; thermal insulation</li>
+        <li>Reduced condensation due to vapour permeability</li>
+        <li>Fire resistance up to 1200°C</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="margin-top:10mm">Anwar Colored Cement Sheet</h2>
+  <div class="grid2">
+    <div>
+      <div class="img" style="aspect-ratio:1/1;background-image:url('assets/cat-residential.jpg')"></div>
+    </div>
+    <div>
+      <h3>Product description</h3>
+      <div class="spec">
+        <div><small>Thickness</small><b>4 mm</b></div>
+        <div><small>Construction</small><b>6-layered</b></div>
+        <div style="grid-column:1/-1"><small>Available sizes</small><b>2, 3, 4, 5, 6, 7, 8, 9, 10 RFT</b></div>
+        <div style="grid-column:1/-1"><small>Colours</small><b><span class="swatch" style="background:#b3312f"></span>Red &nbsp; <span class="swatch" style="background:#2f4f9a"></span>Blue &nbsp; <span class="swatch" style="background:#47634c"></span>Green</b></div>
+      </div>
+      <p class="muted" style="margin-top:10px">Same 6-layered construction and advantages as the natural grey sheet, with a factory-applied colour finish for homes and commercial buildings.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Anwar Cement Sheet – Product Catalogue</span><span>Page 2</span></div>
+</section>
+
+<!-- Applications -->
+<section class="page">
+  <div class="stripe"></div>
+  <p class="eyebrow">Applications</p>
+  <h2>One sheet, three solutions</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="img" style="aspect-ratio:1/1;background-image:url('assets/cat-residential.jpg');margin-bottom:8px"></div>
+      <b>Residential home</b>
+      <small>Main roof, veranda, kitchen and store sheds, extensions.</small>
+      <ul style="margin-top:6px;font-size:9.5pt"><li>Up to 12°C cooler rooms</li><li>Quiet in monsoon rain</li><li>Colour choice</li></ul>
+    </div>
+    <div class="card">
+      <div class="img" style="aspect-ratio:1/1;background-image:url('assets/cat-farm.jpg');margin-bottom:8px"></div>
+      <b>Animal husbandry</b>
+      <small>Dairy and cattle sheds, poultry houses, goat sheds, feed stores.</small>
+      <ul style="margin-top:6px;font-size:9.5pt"><li>Lower heat stress</li><li>No condensation drip</li><li>Ammonia resistant</li></ul>
+    </div>
+    <div class="card">
+      <div class="img" style="aspect-ratio:1/1;background-image:url('assets/cat-industrial.jpg');margin-bottom:8px"></div>
+      <b>Industrial building</b>
+      <small>Warehouses, factories, rice mills, markets, schools and mosques.</small>
+      <ul style="margin-top:6px;font-size:9.5pt"><li>Fire resistance to 1200°C</li><li>Chemical resistant</li><li>Bulk supply</li></ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:10mm">Installation guidelines</h3>
+  <table class="tbl">
+    <tr><th>Item</th><th>Recommendation</th></tr>
+    <tr><td>Minimum roof slope</td><td>15° for proper drainage</td></tr>
+    <tr><td>Side overlap</td><td>One corrugation</td></tr>
+    <tr><td>End overlap</td><td>150–200 mm</td></tr>
+    <tr><td>Fixing</td><td>On the crest of the corrugation with hook bolts and sealing washers</td></tr>
+    <tr><td>Ridge</td><td>Anwar ridge panel; leave a ventilation gap for animal sheds</td></tr>
+    <tr><td>Installer</td><td>Trained installer from your nearest Anwar dealer</td></tr>
+  </table>
+
+  <div class="cta">
+    <div><small style="letter-spacing:.16em;text-transform:uppercase;font-weight:800">Request a quotation</small><b>Hotline: +880 1XXX-XXXXXX</b></div>
+    <div style="text-align:right"><small>info@anwarcementsheet.com</small><br><small>Dealers across Bangladesh</small></div>
+  </div>
+  <div class="foot"><span>Anwar Cement Sheet – Product Catalogue</span><span>Page 3</span></div>
+</section>
+
+</body>
+</html>
