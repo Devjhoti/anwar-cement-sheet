@@ -25,7 +25,7 @@
   };
 
   const CATALOGUE = 'assets/Anwar-Cement-Sheet-Catalogue.pdf';
-  const HOTLINE = '+880 1XXX-XXXXXX';
+  const HOTLINE = '16685';
 
   /* Shared product facts (from Anwar Group product page) */
   const SPECS = [
@@ -68,6 +68,22 @@
       uses: ['Warehouses & godowns', 'Factory and workshop sheds', 'Rice mills and brick fields', 'Markets, bazaars and shops', 'Schools, mosques and community halls'],
       where: ['Industrial zones and EPZs', 'Agro-processing plants', 'Construction site camps', 'Cold-storage service areas'],
       chips: ['Fire safe to 1200°C', 'Bulk supply', 'Long spans', 'Project support']
+    },
+    sheet: {
+      key: 'sheet', icon: 'layers', label: 'Anwar Cement Sheet', title: 'Anwar Cement Sheet',
+      product: 'Anwar Cement Sheet', image: 'assets/cat-farm.jpg',
+      lead: 'The standard 4 mm, 6-layered fibre cement roofing sheet in natural grey. Lengths from 2 to 10 RFT, manufactured to ISO-393:1964 and BDS 1046:1983, BSTI approved, with 10 years of guarantee.',
+      uses: ['House and veranda roofing', 'Dairy, cattle and poultry sheds', 'Warehouses, workshops and mills', 'Markets, bazaars and shops', 'Mosques, schools and halls'],
+      where: ['Anywhere a neutral grey roof is preferred', 'Coastal and riverside areas (rust-free)', 'Farms with ammonia and humidity', 'Hot districts where heat is a concern'],
+      chips: ['Natural grey', '4 mm · 6 layers', '2–10 RFT', '10-year guarantee']
+    },
+    colored: {
+      key: 'colored', icon: 'palette', label: 'Anwar Colored Cement Sheet', title: 'Anwar Colored Cement Sheet',
+      product: 'Anwar Colored Cement Sheet', image: 'assets/cat-residential.jpg',
+      lead: 'The same 4 mm, 6-layered sheet with a factory-applied colour finish in red, blue or green. Same lengths, same standards, same 10-year guarantee.',
+      uses: ['Family homes and extensions', 'Mosques, schools and community buildings', 'Shops and commercial buildings', 'Resorts and farm houses', 'Any roof that is part of the look'],
+      where: ['Homes where the roof colour matters', 'Public buildings with a colour scheme', 'Coastal areas (rust-free)', 'Hot districts where heat is a concern'],
+      chips: ['Red · Blue · Green', '4 mm · 6 layers', '2–10 RFT', '10-year guarantee']
     }
   };
 
@@ -113,7 +129,7 @@
         '<aside class="pd-side">' +
           '<div class="pd-img" style="background-image:url(\'' + p.image + '\')" role="img" aria-label="' + p.product + '"></div>' +
           '<div class="pd-chips">' + p.chips.map(c => '<span>' + c + '</span>').join('') + '</div>' +
-          '<div class="pd-hotline"><span class="pd-hot-ico">' + I.phone + '</span><div><small>Talk to a dealer</small><b>' + HOTLINE + '</b></div></div>' +
+          '<div class="pd-hotline"><span class="pd-hot-ico">' + I.phone + '</span><div><small>Talk to a dealer</small><b>Hotline ' + HOTLINE + '</b></div></div>' +
         '</aside>' +
         '<div class="pd-main">' +
           '<span class="pd-badge"><span class="pd-badge-ico">' + I[p.icon] + '</span>' + p.label + '</span>' +
@@ -121,8 +137,11 @@
           '<p class="pd-lead">' + p.lead + '</p>' +
 
           '<h4 class="pd-h">Product description</h4>' +
-          '<div class="pd-specs">' + SPECS.map(s =>
-            '<div class="pd-spec"><span class="pd-spec-ico">' + I[s[0]] + '</span><small>' + s[1] + '</small><b>' + s[2] + '</b></div>').join('') + '</div>' +
+          '<div class="pd-specs">' + SPECS.map(s => {
+            let v = s[2];
+            if (s[1] === 'Colours') v = p.key === 'sheet' ? 'Natural Grey' : p.key === 'colored' ? 'Red · Blue · Green' : v;
+            return '<div class="pd-spec"><span class="pd-spec-ico">' + I[s[0]] + '</span><small>' + s[1] + '</small><b>' + v + '</b></div>';
+          }).join('') + '</div>' +
 
           '<h4 class="pd-h">Advantages</h4>' +
           '<div class="pd-adv">' + ADVANTAGES.map(a =>
@@ -184,7 +203,7 @@
               field('Size (RFT)', 'size', 'select', { required: true, options: sizes }) +
               field('Colour', 'colour', 'select', { options: ['Select colour', 'Natural Grey', 'Red', 'Blue', 'Green'] }) +
               field('Quantity (pcs)', 'qty', 'number', { placeholder: 'Enter pieces', min: 1 }) +
-              field('Roof type', 'type', 'select', { value: p.label, options: ['Residential home', 'Animal husbandry', 'Industrial building'] }) +
+              field('Roof type', 'type', 'select', { value: ['Residential home', 'Animal husbandry', 'Industrial building'].includes(p.label) ? p.label : 'Residential home', options: ['Residential home', 'Animal husbandry', 'Industrial building'] }) +
               field('Additional products', 'extra', 'textarea', { full: true, placeholder: 'Product name, size, quantity (e.g. ridge panel, hook bolts)' }) +
             '</div>' +
           '</section>' +

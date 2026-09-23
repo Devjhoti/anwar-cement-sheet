@@ -69,25 +69,27 @@
   /* ---------- Mobile nav ---------- */
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navlinks');
-  toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open);
-  });
-  links.addEventListener('click', e => {
-    if (e.target.tagName === 'A') { links.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
-  });
-
-  /* ---------- Active nav link on scroll ---------- */
-  const navAnchors = Array.from(links.querySelectorAll('a'));
-  const sections = navAnchors.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const spy = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        navAnchors.forEach(a => a.classList.toggle('is-current', a.getAttribute('href') === '#' + en.target.id));
-      }
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => spy.observe(s));
+    links.addEventListener('click', e => {
+      if (e.target.tagName === 'A') { links.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+
+  /* ---------- Active nav link on scroll (home page: links carry data-spy="#section") ---------- */
+  const navAnchors = links ? Array.from(links.querySelectorAll('a[data-spy]')) : [];
+  const sections = navAnchors.map(a => document.querySelector(a.dataset.spy)).filter(Boolean);
+  if (sections.length) {
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) navAnchors.forEach(a => a.classList.toggle('is-current', a.dataset.spy === '#' + en.target.id));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => spy.observe(s));
+  }
 
   /* ---------- Roof finder: tabs + coverflow ---------- */
   const finder = [
@@ -104,6 +106,7 @@
   const stage = document.getElementById('cfStage');
   const tabs = Array.from(document.querySelectorAll('.tab'));
   let cfIndex = Math.max(0, finder.findIndex(f => f.key === (document.querySelector('.tab.is-active') || {}).dataset?.type));
+  if (stage) {
 
   stage.innerHTML = finder.map((d, i) =>
     '<article class="cf-card" data-i="' + i + '">' +
@@ -148,6 +151,8 @@
     if (Math.abs(dx) > 50) setFinder(dx < 0 ? cfIndex + 1 : cfIndex - 1);
     sx = null;
   });
+  setFinder(cfIndex);
+  }
 
   /* ---------- Get Quote: preselect roof type in contact form ---------- */
   const typeSelect = document.querySelector('#contactForm select[name="type"]');
@@ -156,7 +161,6 @@
     Array.from(typeSelect.options).forEach(o => { if (o.text === label) typeSelect.value = o.value; });
   }
   preselect(new URLSearchParams(location.search).get('type'));
-  setFinder(cfIndex);
 
   /* ---------- Counters ---------- */
   const counters = document.querySelectorAll('[data-count]');
@@ -247,14 +251,14 @@
   const waWidget = document.querySelector('.wa-widget');
   window.addEventListener('scroll', () => {
     const show = window.scrollY > 600;
-    toTop.classList.toggle('is-visible', show);
+    if (toTop) toTop.classList.toggle('is-visible', show);
     if (waWidget) waWidget.classList.toggle('is-lifted', show);
   }, { passive: true });
-  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* ---------- Contact form (demo) ---------- */
   const form = document.getElementById('contactForm');
-  form.addEventListener('submit', e => {
+  if (form) form.addEventListener('submit', e => {
     e.preventDefault();
     const note = document.getElementById('formNote');
     if (!form.name.value.trim() || !form.phone.value.trim()) {
@@ -267,7 +271,33 @@
     form.reset();
   });
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('#year').forEach(y => { y.textContent = new Date().getFullYear(); });
+
+  /* ---------- Sheet estimator (find-your-roof page) ---------- */
+  const est = document.getElementById('estimator');
+  if (est) {
+    const out = document.getElementById('estResult');
+    const calc = () => {
+      const L = parseFloat(est.length.value), W = parseFloat(est.width.value);
+      const sheetFt = parseFloat(est.sheet.value), cover = parseFloat(est.cover.value) || 1;
+      if (!(L > 0 && W > 0)) { out.innerHTML = '<p class="est-hint">Enter the roof length and width to see an estimate.</p>'; return; }
+      const sheetM = sheetFt * 0.3048 * 0.92;                 // usable length after ~150–200 mm end overlap
+      const rows = Math.ceil(W / sheetM), cols = Math.ceil(L / cover);
+      const n = rows * cols, withWaste = Math.ceil(n * 1.1);
+      out.innerHTML = '<div class="est-num"><b>' + n + '</b><span>sheets of ' + sheetFt + ' RFT</span></div>' +
+        '<div class="est-num"><b>' + withWaste + '</b><span>with 10% cutting allowance</span></div>' +
+        '<div class="est-num"><b>' + rows + ' × ' + cols + '</b><span>rows down the slope × sheets across</span></div>' +
+        '<p class="est-hint">Estimate only. It assumes a single-slope area of ' + L + ' m × ' + W + ' m, side overlap of one corrugation and end overlap of 150–200 mm. Ridge panels and accessories are extra. Your dealer will confirm the exact quantity from the roof drawing.</p>';
+    };
+    est.addEventListener('input', calc); est.addEventListener('change', calc); calc();
+  }
+
+  /* ---------- FAQ accordion (support page) ---------- */
+  document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => {
+    const item = q.parentElement, open = item.classList.contains('is-open');
+    document.querySelectorAll('.faq-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
+    if (!open) { item.classList.add('is-open'); q.setAttribute('aria-expanded', 'true'); }
+  }));
 })();
 
 /* ---------- Sheet colour picker ---------- */

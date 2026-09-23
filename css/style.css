@@ -780,3 +780,110 @@ html.modal-open { overflow: hidden; }
 }
 .wa-tip::after { content: ""; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: var(--ink); }
 .wa-widget:hover .wa-tip { opacity: 1; transform: translate(0, -50%); }
+
+/* =====================================================
+   Section pages (why / products / find / solutions / support / contact)
+   ===================================================== */
+.page-hero { min-height: 460px; }
+.page-hero .detail-hero-copy { padding: 120px 0 56px; }
+.detail-body.alt { background: var(--cream); }
+.two-col { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }
+.two-col .section-head { grid-template-columns: 1fr; margin-bottom: 24px; }
+.two-col .section-head p:last-child { margin-top: 10px; }
+.two-col > div > p { color: var(--muted); font-size: 16.5px; }
+.fact-card { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 14px; position: sticky; top: 130px; }
+.fact-card h4 { font-size: 18px; }
+.fact-card .btn { justify-content: center; }
+.fact-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.fact-card .small { font-size: 14px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 18px; }
+.note.center { text-align: center; }
+.adv-page { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.adv-page .pd-adv-item { background: #fff; border: 1px solid var(--line); padding: 18px; }
+.detail-body.alt .adv-page .pd-adv-item { background: #fff; }
+.spec-page { grid-template-columns: 1fr 1fr; margin: 18px 0 22px; }
+/* comparison / size tables */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+.cmp { width: 100%; border-collapse: collapse; font-size: 15px; }
+.cmp th, .cmp td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cmp thead th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); background: var(--cream); }
+.cmp th.hi, .cmp td.hi { background: #fdecec; color: var(--ink); font-weight: 700; }
+.cmp thead th.hi { color: var(--red-dark); }
+.cmp tbody tr:last-child td { border-bottom: 0; }
+.cmp td:first-child { font-weight: 700; }
+.cmp.sizes td:first-child { color: var(--red-dark); }
+/* products page */
+.prod-list { display: grid; gap: 28px; }
+.prod { display: grid; grid-template-columns: 380px 1fr; gap: 36px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; box-shadow: var(--shadow); }
+.prod-img { aspect-ratio: 1 / 1; border-radius: 12px; background-size: cover; background-position: center; }
+.prod-body h3 { margin: 6px 0 10px; }
+.prod-body > p { color: var(--muted); }
+.prod-body .actions { margin-top: 4px; }
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.step { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 26px 22px 22px; }
+.step b { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--red); color: #fff; font-size: 17px; margin-bottom: 14px; }
+.step h4 { margin-bottom: 6px; }
+.step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+/* estimator */
+.estimator { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.estimator label { display: grid; gap: 6px; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.estimator label small { font-weight: 600; color: var(--muted); text-transform: none; letter-spacing: 0; }
+.estimator input, .estimator select { font: inherit; padding: 13px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fbfaf8; }
+.estimator input:focus, .estimator select:focus { outline: 0; border-color: var(--red); box-shadow: 0 0 0 3px rgba(235,29,39,.15); background: #fff; }
+.est-card { background: var(--ink); color: #fff; border-color: var(--ink); }
+.est-card h4 { color: #fff; }
+.est-num { display: flex; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.est-num b { font-size: 30px; color: #ff8b91; letter-spacing: -.02em; }
+.est-num span { font-size: 14px; color: #cfd5d2; }
+.est-hint { font-size: 13px; color: #aab1ae; margin: 10px 0 0; }
+.est-card .btn { margin-top: 6px; }
+/* solutions page */
+.app3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.app3 .appcard { min-height: 380px; }
+.use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.use { display: grid; grid-template-columns: 48px 1fr; gap: 4px 16px; align-items: center; background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.use-ico { grid-row: 1 / 3; width: 48px; height: 48px; border-radius: 12px; background: #fff; color: var(--red); display: grid; place-items: center; border: 1px solid var(--line); }
+.use-ico svg { width: 24px; height: 24px; }
+.use strong { font-size: 16px; }
+.use span:not(.use-ico) { font-size: 13.5px; color: var(--muted); }
+/* support page */
+.div-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.div-chip { display: flex; align-items: center; gap: 10px; padding: 16px 18px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-weight: 700; }
+.div-chip .ico { color: var(--red); }
+.div-chip .ico svg { width: 18px; height: 18px; }
+.faq-wrap { max-width: 860px; }
+.faq { display: grid; gap: 10px; }
+.faq-item { border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; }
+.faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-align: left; padding: 18px 20px; border: 0; background: none; font-weight: 700; font-size: 16px; color: var(--ink); }
+.faq-q svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--red); transition: transform .3s; }
+.faq-item.is-open .faq-q svg { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+.faq-item.is-open .faq-a { max-height: 300px; }
+.faq-a p { margin: 0; padding: 0 20px 18px; color: var(--muted); }
+/* contact page */
+.contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ccard { display: grid; gap: 4px; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.ccard-ico { width: 46px; height: 46px; border-radius: 12px; background: #fdecec; color: var(--red); display: grid; place-items: center; margin-bottom: 8px; }
+.ccard-ico.wa { background: #e6f9ee; color: #1aa04b; }
+.ccard-ico svg { width: 22px; height: 22px; }
+.ccard small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+.ccard b { font-size: 17px; word-break: break-all; }
+.ccard span:last-child { font-size: 13px; color: var(--muted); }
+.contact-copy > p { color: #ffd8da; }
+.contact-form h3 { margin-bottom: 4px; }
+.map { margin-top: 26px; border-radius: 12px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,.25); aspect-ratio: 16 / 10; background: #fff; }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 1024px) { .adv-page, .app3, .use-grid { grid-template-columns: 1fr 1fr; } .contact-cards, .div-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  .two-col, .prod, .adv-page, .app3, .use-grid, .estimator, .spec-page { grid-template-columns: 1fr; }
+  .fact-card { position: static; }
+  .prod { padding: 18px; }
+  .prod-img { max-width: 360px; }
+  .page-hero .detail-hero-copy { padding: 90px 0 44px; }
+}
+@media (max-width: 520px) { .contact-cards, .div-grid { grid-template-columns: 1fr; } }
+/* icon sizing inside any button + tidier step grid */
+.btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.steps { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+.page-hero::before { background: linear-gradient(0deg, rgba(10,10,12,.94) 0%, rgba(10,10,12,.62) 55%, rgba(10,10,12,.35) 100%); }
