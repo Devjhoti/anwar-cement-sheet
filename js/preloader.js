@@ -1,16 +1,14 @@
 /* Anwar Cement Sheet – cinematic preloader
    Timeline: corrugation lines draw → red light sweep → roof outline strikes → logo rises with dust burst
    → wordmark types on → progress bar completes → curtains part. Sound is synthesized (Web Audio) and
-   only plays after a user gesture, per browser autoplay rules. Skipped for repeat visits in the same
-   session and for reduced-motion users. */
+   only plays after a user gesture, per browser autoplay rules. Skipped for
+   reduced-motion users; shows on every load. */
 (function () {
   'use strict';
   const root = document.getElementById('preloader');
   if (!root) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const seen = (() => { try { return sessionStorage.getItem('acs-preloaded'); } catch (e) { return null; } })();
-  if (reduce || seen) { root.remove(); document.documentElement.classList.remove('is-loading'); return; }
-  try { sessionStorage.setItem('acs-preloaded', '1'); } catch (e) {}
+  if (reduce) { root.remove(); document.documentElement.classList.remove('is-loading'); return; }
 
   document.documentElement.classList.add('is-loading');
   const canvas = root.querySelector('canvas');
@@ -187,7 +185,7 @@
     root.classList.add('is-done');
     document.documentElement.classList.remove('is-loading');
     document.dispatchEvent(new CustomEvent('preloader:done'));
-    setTimeout(() => root.remove(), 1400);
+    setTimeout(() => root.remove(), 1350);
   }
 
   // skip on click after the first second
