@@ -887,3 +887,30 @@ html.modal-open { overflow: hidden; }
 .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .steps { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
 .page-hero::before { background: linear-gradient(0deg, rgba(10,10,12,.94) 0%, rgba(10,10,12,.62) 55%, rgba(10,10,12,.35) 100%); }
+
+/* =====================================================
+   Preloader
+   ===================================================== */
+html.is-loading { overflow: hidden; }
+#preloader { position: fixed; inset: 0; z-index: 1000; background: #0b0c0c; overflow: hidden; }
+#preloader canvas { position: absolute; inset: 0; display: block; }
+#preloader.is-shake canvas { animation: plShake .35s ease-out; }
+@keyframes plShake { 0%,100% { transform: none; } 20% { transform: translate(-6px, 4px); } 40% { transform: translate(5px, -3px); } 60% { transform: translate(-3px, 2px); } 80% { transform: translate(2px, -1px); } }
+.pl-ui { position: absolute; left: 50%; bottom: clamp(36px, 8vh, 80px); transform: translateX(-50%); width: min(320px, 70vw); color: #8f9793; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; display: grid; gap: 10px; text-align: center; }
+.pl-bar { height: 3px; background: rgba(255,255,255,.12); border-radius: 3px; overflow: hidden; }
+.pl-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #7f0c14, #eb1d27, #ff8b91); box-shadow: 0 0 14px rgba(235,29,39,.7); }
+.pl-meta { display: flex; justify-content: space-between; }
+.pl-skip { position: absolute; right: 22px; top: 18px; color: #8f9793; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 800; cursor: pointer; }
+/* curtains */
+#preloader::before, #preloader::after { content: ""; position: absolute; top: 0; bottom: 0; width: 50%; background: #0b0c0c; z-index: 2; transform: scaleX(0); transition: transform .9s cubic-bezier(.77,0,.18,1); }
+#preloader::before { left: 0; transform-origin: left; }
+#preloader::after { right: 0; transform-origin: right; }
+#preloader.is-done { background: transparent; pointer-events: none; }
+#preloader.is-done canvas, #preloader.is-done .pl-ui, #preloader.is-done .pl-skip { opacity: 0; transition: opacity .25s; }
+#preloader.is-done::before, #preloader.is-done::after { transform: scaleX(1); animation: curtain .9s cubic-bezier(.77,0,.18,1) .2s forwards; }
+#preloader.is-done::before { animation-name: curtainL; }
+#preloader.is-done::after { animation-name: curtainR; }
+@keyframes curtainL { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes curtainR { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+/* hold hero entrance until the preloader has finished */
+html.is-loading .hero-slide.is-active .hero-copy > * { animation-play-state: paused; }

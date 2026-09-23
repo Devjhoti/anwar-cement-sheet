@@ -63,7 +63,11 @@
     });
 
     render();
-    restart();
+    // hold autoplay (and the text entrance) until the preloader has finished, if one is running
+    if (document.documentElement.classList.contains('is-loading')) {
+      clearInterval(timer);
+      document.addEventListener('preloader:done', () => { render(); restart(); }, { once: true });
+    } else restart();
   }
 
   /* ---------- Mobile nav ---------- */
