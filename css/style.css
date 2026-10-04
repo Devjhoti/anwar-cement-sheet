@@ -108,7 +108,7 @@ section { padding: 90px 0; }
 .hero-slide.is-active { opacity: 1; visibility: visible; position: relative; }
 .hero-bg {
   position: absolute; inset: 0; background-size: cover; background-position: center;
-  transform: scale(1.06); transition: transform 3.2s linear;
+  transform: scale(1.06); transition: transform 8s linear;
 }
 .hero-slide.is-active .hero-bg { transform: scale(1); }
 .hero-bg::after {
