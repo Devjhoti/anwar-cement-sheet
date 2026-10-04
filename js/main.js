@@ -6,7 +6,7 @@
   const slides = Array.from(document.querySelectorAll('.hero-slide'));
   const dotsWrap = document.getElementById('heroDots');
   const progress = document.getElementById('heroProgress');
-  const DURATION = 7000;
+  const DURATION = 5000;
   let index = Math.max(0, slides.findIndex(s => s.classList.contains('is-active')));
   let timer = null;
 
