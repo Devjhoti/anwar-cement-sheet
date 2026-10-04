@@ -155,7 +155,11 @@
     if (Math.abs(dx) > 50) setFinder(dx < 0 ? cfIndex + 1 : cfIndex - 1);
     sx = null;
   });
-  setFinder(cfIndex);
+  // stage height follows the card, so nothing is clipped or wasted at any screen size
+  const fitStage = () => { const h = Math.max.apply(null, cards.map(c => c.offsetHeight)); if (h) stage.style.height = (h + 44) + 'px'; };
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(fitStage); cards.forEach(c => ro.observe(c)); }
+  addEventListener('resize', fitStage); addEventListener('load', fitStage);
+  setFinder(cfIndex); fitStage();
   }
 
   /* ---------- Get Quote: preselect roof type in contact form ---------- */

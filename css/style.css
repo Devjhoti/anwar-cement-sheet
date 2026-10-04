@@ -1190,3 +1190,202 @@ p.eyebrow.eyebrow-red { color: var(--red); }
 .dr-logo { mix-blend-mode: normal; }
 .two-col > div > .lede { font-size: 17px; }
 .media img { object-position: center 20%; }
+
+/* =====================================================
+   Responsive layer v2: height-aware sizing
+   Everything below adapts to viewport HEIGHT as well as width, so short
+   laptops (≈600–800px tall) and landscape phones are first-class.
+   ===================================================== */
+:root { --header-h: 115px; }
+html { scroll-padding-top: calc(var(--header-h) + 10px); }
+
+/* ---- fluid section rhythm and headings ---- */
+section { padding: clamp(44px, 8.5vh, 90px) 0; }
+h2 { font-size: clamp(30px, min(4vw, 6vh), 50px); }
+h3 { font-size: clamp(22px, min(3vw, 4.4vh), 34px); }
+.section-head { margin-bottom: clamp(22px, 5vh, 48px); }
+.section-head p { font-size: clamp(15.5px, 2.3vh, 18px); }
+.sub-h { margin-top: clamp(28px, 6vh, 56px); }
+
+/* ---- header ---- */
+.fact-card, .detail-side { top: calc(var(--header-h) + 16px); }
+.sticky-col { top: calc(var(--header-h) + 24px); }
+@media (min-width: 981px) and (max-width: 1120px) { .navlinks { gap: 18px; font-size: 13.5px; } .nav { gap: 20px; } }
+@media (max-width: 980px) {
+  .navlinks {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0;
+    border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+    max-height: calc(100vh - var(--header-h)); max-height: calc(100svh - var(--header-h)); overflow-y: auto;
+  }
+  .navlinks.is-open { display: flex; }
+  .navlinks li a { display: block; padding: 14px 20px; border-top: 1px solid var(--line); }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+}
+@media (max-width: 860px) { :root { --header-h: 101px; } .nav { height: 64px; } .brand img { width: 48px; } }
+@media (max-height: 820px) {
+  :root { --header-h: 93px; }
+  .topbar { font-size: 12.5px; } .topbar-inner { height: 30px; }
+  .nav { height: 62px; } .brand img { width: 46px; }
+  .brand-text strong { font-size: 18px; } .nav-cta { padding: 10px 18px; }
+}
+@media (max-height: 520px) {
+  :root { --header-h: 55px; }
+  .topbar { display: none; } .nav { height: 54px; } .brand img { width: 40px; }
+  .navlinks li a { padding: 10px 20px; }
+}
+
+/* ---- home hero: always fits under the header ---- */
+.hero { min-height: clamp(220px, calc(100vh - var(--header-h)), 720px); min-height: clamp(220px, calc(100svh - var(--header-h)), 720px); }
+.hero-copy { padding-top: clamp(22px, 9vh, 110px); padding-bottom: clamp(40px, 11vh, 120px); }
+.hero h1 { font-size: clamp(30px, min(6vw, 9.2vh), 76px); }
+.hero .lead { font-size: clamp(15px, 2.4vh, 19px); }
+.hero-tag { margin-top: clamp(10px, 2.4vh, 20px); }
+.hero .actions { margin-top: clamp(14px, 3.6vh, 32px); }
+.hero-dots { bottom: clamp(14px, 4vh, 34px); }
+.hero-arrow { width: clamp(38px, 6vh, 50px); height: clamp(38px, 6vh, 50px); }
+@media (max-height: 480px) { .hero .lead { display: none; } .hero .eyebrow { margin-bottom: 6px; } .hero .btn { padding: 10px 18px; font-size: 14px; } }
+
+/* ---- inner page heroes ---- */
+.detail-hero { min-height: clamp(260px, 62vh, 520px); }
+.page-hero { min-height: clamp(240px, 56vh, 460px); }
+.detail-hero-copy, .page-hero .detail-hero-copy { padding-top: clamp(36px, 13vh, 130px); padding-bottom: clamp(28px, 7vh, 64px); }
+.detail-hero h1 { font-size: clamp(28px, min(5vw, 8vh), 60px); }
+.detail-hero .lead { font-size: clamp(15px, 2.3vh, 18px); }
+
+/* ---- trust strip ---- */
+.trust-grid > div { padding-top: clamp(16px, 3.4vh, 28px); padding-bottom: clamp(16px, 3.4vh, 28px); }
+.trust-grid strong { font-size: clamp(28px, 4.6vh, 38px); }
+
+/* ---- Why Anwar grid ---- */
+.climate-card { padding: clamp(20px, 3.8vh, 44px); }
+.climate-card h3 { margin-bottom: clamp(14px, 3vh, 26px); }
+.weather { gap: clamp(8px, 1.6vh, 14px); }
+.weather > div { padding: clamp(11px, 1.8vh, 18px); }
+.weather .wx { width: clamp(38px, 5.6vh, 48px); height: clamp(38px, 5.6vh, 48px); margin-bottom: clamp(6px, 1.4vh, 12px); }
+.weather strong { font-size: clamp(17px, 2.5vh, 20px); }
+.benefits { gap: clamp(12px, 2.4vh, 22px); }
+.why .benefit, .benefit { padding: clamp(16px, 3.1vh, 26px); }
+.benefit-icon { width: clamp(42px, 6.2vh, 52px); height: clamp(42px, 6.2vh, 52px); margin-bottom: clamp(8px, 1.7vh, 14px); }
+@media (max-width: 1024px) { .why-grid { grid-template-columns: 1fr; gap: 22px; } .tds-split { grid-template-columns: 1fr; } }
+
+/* ---- products band ---- */
+.roof-visual { height: clamp(200px, 40vh, 340px); }
+.product-cards { margin-top: clamp(26px, 6vh, 60px); }
+.pcard-visual { height: clamp(96px, 17vh, 150px); }
+.chips { margin: clamp(14px, 2.8vh, 24px) 0 clamp(16px, 3.4vh, 30px); }
+.pcard { padding: clamp(16px, 2.6vh, 22px); }
+
+/* ---- Find Your Roof coverflow: card sized to the visible height ---- */
+.tabs { margin-bottom: clamp(16px, 4vh, 40px); }
+.tab { padding-top: clamp(11px, 1.9vh, 15px); padding-bottom: clamp(11px, 1.9vh, 15px); }
+.cf { --cfw: min(440px, 80vw); padding: 6px 0 12px; }
+.cf-card { width: var(--cfw); margin-left: calc(var(--cfw) / -2); }
+.cf-stage { height: calc(var(--cfw) + 270px); }
+@media (max-height: 900px) and (min-width: 861px) {
+  /* landscape image + width capped so image + text + buttons fit under the header */
+  .cf { --cfw: clamp(280px, calc((100vh - var(--header-h) - 340px) / .75), 440px); --cfw: clamp(280px, calc((100svh - var(--header-h) - 340px) / .75), 440px); }
+  .cf-img { aspect-ratio: 4 / 3; }
+  .cf-body { padding: 18px 22px 20px; }
+  .cf-body h3 { font-size: 19px; margin-bottom: 6px; }
+  .cf-body p { font-size: 14px; line-height: 1.5; }
+  .cf-body .actions { margin-top: 14px; }
+  .cf-body .btn { padding: 11px 20px; }
+  .cf-stage { height: calc(var(--cfw) * .75 + 262px); }
+  .cf::before { width: 300px; height: 300px; }
+}
+@media (max-width: 860px) and (max-height: 760px) and (orientation: portrait) {
+  .cf-img { aspect-ratio: 4 / 3; } .cf-body { padding: 16px 18px 18px; }
+  .cf-body h3 { font-size: 18px; margin-bottom: 6px; } .cf-body p { font-size: 14px; line-height: 1.5; }
+  .cf-body .actions { flex-direction: row; gap: 8px; margin-top: 14px; }
+  .cf-body .btn { flex: 1; padding: 11px 6px; font-size: 11.5px; letter-spacing: .04em; }
+}
+@media (max-width: 860px) and (max-height: 600px) and (orientation: portrait) { .cf-img { aspect-ratio: 16 / 10; } }
+@media (max-height: 520px) and (orientation: landscape) {
+  /* landscape phones: horizontal card */
+  .cf { --cfw: min(620px, 86vw); }
+  .cf-card { display: grid; grid-template-columns: 40% 1fr; }
+  .cf-img { aspect-ratio: auto; min-height: 100%; }
+  .cf-body { text-align: left; padding: 16px 18px; align-self: center; }
+  .cf-body h3 { font-size: 17px; } .cf-body p { font-size: 13.5px; }
+  .cf-body .actions { flex-direction: row; justify-content: flex-start; margin-top: 12px; }
+  .cf-body .btn { padding: 9px 14px; font-size: 12px; }
+  .cf-card.is-left, .cf-card.is-right { opacity: 0; pointer-events: none; }
+  .cf::before { display: none; }
+}
+
+/* ---- DuraRoof band, testimonials, rails, bento ---- */
+.dr-band h2 { font-size: clamp(26px, min(3.6vw, 6vh), 46px); }
+.dr-visual > img { max-height: clamp(220px, 52vh, 460px); }
+.dr-facts { margin-top: clamp(26px, 6.5vh, 64px); }
+.dr-facts div { padding-top: clamp(14px, 2.8vh, 24px); }
+.dr-facts b { font-size: clamp(22px, 3.4vh, 28px); }
+.tslide-media { min-height: clamp(200px, 44vh, 360px); }
+.tslide-body { padding-top: clamp(22px, 5vh, 44px); padding-bottom: clamp(22px, 5vh, 44px); }
+.tslide-body p { font-size: clamp(14.5px, 2.1vh, 16px); }
+.rail > * { flex-basis: clamp(220px, min(26vw, calc((100vh - var(--header-h) - 240px) * .8)), 330px); }
+.b-photo { min-height: clamp(190px, 34vh, 280px); }
+.b-tall { min-height: clamp(260px, 52vh, 420px); }
+.cert-fan { max-width: min(520px, 68vh); height: auto; aspect-ratio: 13 / 10; }
+.dr-feature-body { padding-top: clamp(24px, 5vh, 40px); padding-bottom: clamp(24px, 5vh, 40px); }
+.kpi { padding-top: clamp(14px, 2.5vh, 20px); padding-bottom: clamp(14px, 2.5vh, 20px); }
+.kpi b { font-size: clamp(28px, 4.6vh, 38px); }
+.frame img { max-height: 62vh; }
+.onestop { margin-top: clamp(28px, 6vh, 56px); }
+.story-img { min-height: clamp(260px, 60vh, 480px); }
+.story-copy { padding: clamp(26px, 6vh, 54px) clamp(24px, 4vw, 54px); }
+.appcard { min-height: clamp(260px, 52vh, 420px); }
+.app3 .appcard { min-height: clamp(240px, 48vh, 380px); }
+.map { max-height: 50vh; }
+
+/* ---- modals on short screens: let the side column scroll with the content ---- */
+@media (max-height: 760px) { .pd-side, .qf-side { position: static; } .pd-main, .qf-form { padding-top: 28px; } }
+@media (max-height: 560px) { .modal-root { padding: 0; } .modal { max-height: 100vh; max-height: 100svh; border-radius: 0; width: 100%; } .qf-img { aspect-ratio: 16 / 7; } .pd-img { max-width: 240px; } }
+
+/* ---- short AND narrow-ish desktops: tighter headings ---- */
+@media (max-height: 700px) {
+  h2 { font-size: clamp(24px, min(4vw, 6vh), 50px); }
+  h3 { font-size: clamp(19px, min(3vw, 4.4vh), 34px); }
+  .eyebrow { margin-bottom: 8px; }
+  .btn { padding: 12px 20px; }
+}
+
+/* ---- preloader UI ---- */
+.pl-ui { bottom: clamp(18px, 8vh, 80px); }
+
+/* ---- very wide screens ---- */
+@media (min-width: 1800px) { .wrap { width: min(1320px, calc(100% - 40px)); } }
+
+/* ---- fixes after visual review ---- */
+.hero-slide { min-height: inherit; }                       /* photo always fills the hero */
+.why { padding-top: clamp(36px, 6.5vh, 90px); padding-bottom: clamp(36px, 6.5vh, 90px); }
+@media (max-height: 820px) and (min-width: 1025px) {
+  .weather span:not(.wx) { font-size: 12.5px; line-height: 1.45; display: block; }
+  .benefit p { font-size: 14px; } .benefit h4 { font-size: 18px; margin-bottom: 5px; }
+  .why .section-head { margin-bottom: clamp(16px, 3.4vh, 48px); }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .tabs { flex-direction: row; border-radius: 999px; width: max-content; max-width: 100%; }
+  .tab { min-width: 0; padding: 9px 16px; font-size: 11.5px; letter-spacing: .1em; }
+  .xtab { padding: 9px 14px; }
+  .wa-widget { width: 46px; height: 46px; } .wa-widget svg { width: 24px; height: 24px; }
+  .wa-widget.is-lifted { bottom: 72px; } .to-top { width: 40px; height: 40px; }
+}
+@media (max-height: 360px) { .hero .eyebrow { display: none; } .hero-copy { padding-top: 16px; padding-bottom: 34px; } }
+@media (max-height: 900px) and (min-width: 861px) {
+  .cf-body .actions { flex-wrap: nowrap; gap: 8px; }
+  .cf-body .btn { padding: 10px 14px; font-size: 12px; white-space: nowrap; }
+  .cf-card.is-center .cf-body .actions { max-height: 60px; }
+}
+/* modal action bar stays pinned while the content scrolls */
+.modal-foot { position: sticky; bottom: 0; z-index: 4; }
+/* very short desktop/laptop screens: horizontal finder card (same as landscape phones) */
+@media (max-height: 640px) and (min-width: 861px) {
+  .cf { --cfw: min(640px, 70vw); }
+  .cf-card { display: grid; grid-template-columns: 42% 1fr; }
+  .cf-img { aspect-ratio: auto; min-height: 100%; }
+  .cf-body { text-align: left; padding: 20px 22px; align-self: center; }
+  .cf-body .actions { justify-content: flex-start; }
+  .cf-card.is-left  { transform: translateY(-50%) translateX(-62%) scale(.8) rotateY(18deg); opacity: .35; }
+  .cf-card.is-right { transform: translateY(-50%) translateX(62%) scale(.8) rotateY(-18deg); opacity: .35; }
+}
