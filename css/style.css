@@ -1196,7 +1196,7 @@ p.eyebrow.eyebrow-red { color: var(--red); }
    Everything below adapts to viewport HEIGHT as well as width, so short
    laptops (≈600–800px tall) and landscape phones are first-class.
    ===================================================== */
-:root { --header-h: 115px; }
+:root { --header-h: 79px; }
 html { scroll-padding-top: calc(var(--header-h) + 10px); }
 
 /* ---- fluid section rhythm and headings ---- */
@@ -1222,16 +1222,15 @@ h3 { font-size: clamp(22px, min(3vw, 4.4vh), 34px); }
   .nav-cta { display: none; }
   .nav-toggle { display: flex; }
 }
-@media (max-width: 860px) { :root { --header-h: 101px; } .nav { height: 64px; } .brand img { width: 48px; } }
+@media (max-width: 860px) { :root { --header-h: 65px; } .nav { height: 64px; } .brand img { width: 48px; } }
 @media (max-height: 820px) {
-  :root { --header-h: 93px; }
-  .topbar { font-size: 12.5px; } .topbar-inner { height: 30px; }
+  :root { --header-h: 63px; }
   .nav { height: 62px; } .brand img { width: 46px; }
   .brand-text strong { font-size: 18px; } .nav-cta { padding: 10px 18px; }
 }
 @media (max-height: 520px) {
   :root { --header-h: 55px; }
-  .topbar { display: none; } .nav { height: 54px; } .brand img { width: 40px; }
+  .nav { height: 54px; } .brand img { width: 40px; }
   .navlinks li a { padding: 10px 20px; }
 }
 
