@@ -913,3 +913,130 @@ html.is-loading { overflow: hidden; }
 @keyframes curtainOpen { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 /* hold hero entrance until the preloader has finished */
 html.is-loading .hero-slide.is-active .hero-copy > * { animation-play-state: paused; }
+
+/* =====================================================
+   Anwar DuraRoof brochure content
+   ===================================================== */
+.dr-logo { width: min(260px, 70%); height: auto; margin-bottom: 14px; }
+.sub-h { margin: 56px 0 22px; font-size: clamp(22px, 2.4vw, 30px); }
+.tbl-h { margin-bottom: 12px; }
+.photo { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 20px; }
+.photo.wide { margin: 36px 0 0; max-height: 460px; object-fit: cover; }
+.diagram { width: 100%; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.cmp.compact th, .cmp.compact td { padding: 9px 12px; font-size: 13.5px; }
+.cmp.tds td:nth-child(n+2) { white-space: nowrap; }
+.fact-card .tbl-wrap { box-shadow: none; }
+/* 12 benefits */
+.dr-benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+.dr-benefit { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.dr-benefit strong { font-size: 14.5px; line-height: 1.3; }
+/* home band */
+.dr-band { background: #fff; }
+.dr-band-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+.dr-band h2 { margin-bottom: 14px; font-size: clamp(28px, 3.4vw, 44px); }
+.dr-band p { color: var(--muted); font-size: 17px; }
+.dr-band-img img { width: 100%; border-radius: 18px; }
+.dr-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 22px 0 6px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.dr-stats div { padding: 14px 12px 14px 0; }
+.dr-stats b { display: block; font-size: 22px; color: var(--red); letter-spacing: -.02em; }
+.dr-stats span { font-size: 12.5px; color: var(--muted); }
+/* client logo marquee */
+.logo-marquee { overflow: hidden; padding: 6px 0 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.logo-track { display: flex; gap: 16px; width: max-content; animation: marquee 90s linear infinite; }
+.logo-marquee:hover .logo-track { animation-play-state: paused; }
+.logo-track img { width: 150px; height: auto; border-radius: 10px; background: #fff; border: 1px solid var(--line); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+/* testimonials */
+.tcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.tcard { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px; position: relative; }
+.tq { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #fdecec; color: var(--red); }
+.tq svg { width: 22px; height: 22px; }
+.tcard h4 { font-size: 17px; line-height: 1.25; }
+.tcard blockquote { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.55; flex: 1; }
+.tcard figcaption { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding-top: 14px; }
+.tcard figcaption img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--red); }
+.tcard figcaption strong { display: block; font-size: 14.5px; }
+.tcard figcaption small { color: var(--muted); font-size: 12.5px; }
+/* message card (chairman / professor) */
+.msg { display: grid; grid-template-columns: 300px 1fr; gap: 0; background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.msg > img { width: 100%; height: 100%; object-fit: cover; object-position: top; min-height: 320px; background: var(--cream); }
+.msg > div { padding: 32px 36px; }
+.msg blockquote { margin: 14px 0; color: var(--ink); font-size: 16px; }
+.msg blockquote p { margin: 0 0 12px; }
+.msg-by strong { display: block; font-size: 17px; }
+.msg-by small { color: var(--muted); }
+.cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.cert { display: grid; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.cert img { width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+.cert span { font-size: 13.5px; font-weight: 700; }
+.split-photo { position: relative; margin-top: 36px; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.split-photo img { width: 100%; max-height: 520px; object-fit: cover; display: block; }
+.split-photo > div { position: absolute; left: 24px; bottom: 24px; background: rgba(17,17,17,.82); color: #fff; padding: 18px 22px; border-radius: 12px; backdrop-filter: blur(6px); }
+.split-photo h3 { font-size: 22px; }
+.split-photo p { margin: 4px 0 0; color: #d9dedb; }
+.news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.news { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.news img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+.news > div { padding: 22px 24px; }
+.news h4 { margin-bottom: 8px; }
+.news p { margin: 0; color: var(--muted); font-size: 15px; }
+.concerns { margin-top: 28px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; text-align: center; }
+.concerns img { width: min(900px, 100%); margin: 0 auto; }
+.leed-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.leed { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 20px 12px; background: var(--cream); border: 1px solid var(--line); border-radius: 14px; }
+.leed strong { font-size: 14.5px; }
+.sdg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sdg { display: grid; grid-template-columns: 54px 1fr; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; align-items: start; }
+.sdg-n { width: 54px; height: 54px; border-radius: 10px; color: #fff; font-weight: 800; font-size: 20px; display: grid; place-items: center; }
+.sdg strong { display: block; margin-bottom: 8px; font-size: 15.5px; }
+.sdg .ticks.small li { font-size: 13.5px; }
+/* solutions additions */
+.ind-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.ind-chip { padding: 10px 16px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; font-size: 14px; }
+.ind-chip.is-done { transition: .2s; }
+.ind-chip.is-done:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.proj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.proj { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.proj img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.proj figcaption { padding: 14px 16px 16px; border-top: 3px solid var(--red); display: grid; gap: 2px; }
+.proj strong { font-size: 14.5px; }
+.proj span { font-size: 13.5px; }
+.proj small { color: var(--muted); font-size: 12.5px; }
+.live-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.live { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.live img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.live > div { padding: 24px; }
+.live h3 { margin-bottom: 14px; color: var(--red); }
+.glob-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.glob { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.glob img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.glob > div { padding: 18px 20px 20px; }
+.glob small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); font-weight: 800; }
+.glob h4 { margin: 4px 0 6px; }
+.glob p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.map-fig { margin: 32px 0 0; text-align: center; }
+.map-fig img { width: min(980px, 100%); margin: 0 auto; }
+.map-fig figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
+/* support additions */
+.diagram-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 22px; margin-top: 28px; align-items: start; }
+.diagram-row figure { margin: 0; }
+.diagram-row figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.step b svg { width: 20px; height: 20px; }
+@media (max-width: 1024px) {
+  .dr-benefits, .tcards, .proj-grid { grid-template-columns: 1fr 1fr; }
+  .leed-grid { grid-template-columns: repeat(3, 1fr); }
+  .sdg-grid, .glob-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .dr-band-grid, .msg, .news-grid, .live-grid, .diagram-row, .cert-grid { grid-template-columns: 1fr; }
+  .msg > img { min-height: 0; max-height: 340px; }
+  .msg > div { padding: 22px; }
+  .dr-stats { grid-template-columns: 1fr 1fr; }
+  .split-photo > div { position: static; border-radius: 0; }
+}
+@media (max-width: 520px) {
+  .dr-benefits, .tcards, .proj-grid, .sdg-grid, .glob-grid, .leed-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
+.dr-logo, .dr-band-img img, .prod-img[aria-label*="DuraRoof"] { mix-blend-mode: multiply; }
+.detail-body.alt .prod-img[aria-label*="DuraRoof"] { background-color: transparent !important; }

@@ -84,6 +84,29 @@
       uses: ['Family homes and extensions', 'Mosques, schools and community buildings', 'Shops and commercial buildings', 'Resorts and farm houses', 'Any roof that is part of the look'],
       where: ['Homes where the roof colour matters', 'Public buildings with a colour scheme', 'Coastal areas (rust-free)', 'Hot districts where heat is a concern'],
       chips: ['Red · Blue · Green', '4 mm · 6 layers', '2–10 RFT', '10-year guarantee']
+    },
+    duraroof: {
+      key: 'duraroof', icon: 'factory', label: 'Anwar DuraRoof', title: 'Anwar DuraRoof',
+      product: 'Anwar DuraRoof', image: 'assets/duraroof/hero-render.jpg', brochure: 'assets/Anwar-DuraRoof-Brochure.pdf',
+      lead: 'A contemporary high-tech industrial roofing solution made of cement and strengthened by fibre. 6 mm thick, 4 ft to 12 ft lengths, made with Italian technology and tested by BUET.',
+      specs: [
+        ['thick', 'Thickness', '6 mm (1/4")'],
+        ['ruler', 'Sheet lengths', '4, 5, 6, 7, 8, 9, 10, 11, 12 ft'],
+        ['layers', 'Overall / net cover width', '1086 mm / 1016 mm'],
+        ['palette', 'Load bearing capacity', '950 kg/m²']
+      ],
+      adv: [
+        ['temp', 'Reduces temperature up to 12°C', 'Cooler factory floors in summer.'],
+        ['sound', 'Noise and thermal insulator', 'Excellent insulation against rain noise and heat.'],
+        ['shield', 'Rust and corrosion free', 'No rusting in humid or coastal industrial sites.'],
+        ['flask', 'Resistant to chemical reactions', 'Suited to dyeing, chemical, fertilizer and leather plants.'],
+        ['fire', 'Fire resistant up to 1100°C', 'Non-flammable industrial roofing.'],
+        ['drop', 'Reduces condensation', 'Keeps the factory environment dry.'],
+        ['layers', 'Low maintenance, cost effective', 'Low maintenance cost over a long service life.']
+      ],
+      uses: ['Roofing of industrial buildings', 'Wall cladding', 'Godown and warehouse sheds', 'Bungalows and commercial buildings', 'Dairy and poultry sheds'],
+      where: ['Garments, textile, spinning and dyeing', 'Chemical, fertilizer and pharmaceuticals', 'Steel, battery, ceramic and brick fields', 'Paper, jute, sugar, rice and tea industries'],
+      chips: ['6 mm', '4–12 ft', 'BUET tested', 'Italian technology']
     }
   };
 
@@ -137,14 +160,14 @@
           '<p class="pd-lead">' + p.lead + '</p>' +
 
           '<h4 class="pd-h">Product description</h4>' +
-          '<div class="pd-specs">' + SPECS.map(s => {
+          '<div class="pd-specs">' + (p.specs || SPECS).map(s => {
             let v = s[2];
             if (s[1] === 'Colours') v = p.key === 'sheet' ? 'Natural Grey' : p.key === 'colored' ? 'Red · Blue · Green' : v;
             return '<div class="pd-spec"><span class="pd-spec-ico">' + I[s[0]] + '</span><small>' + s[1] + '</small><b>' + v + '</b></div>';
           }).join('') + '</div>' +
 
           '<h4 class="pd-h">Advantages</h4>' +
-          '<div class="pd-adv">' + ADVANTAGES.map(a =>
+          '<div class="pd-adv">' + (p.adv || ADVANTAGES).map(a =>
             '<div class="pd-adv-item"><span class="pd-adv-ico">' + I[a[0]] + '</span><div><strong>' + a[1] + '</strong><span>' + a[2] + '</span></div></div>').join('') + '</div>' +
 
           '<div class="pd-two">' +
@@ -154,7 +177,7 @@
         '</div>' +
       '</div>' +
       '<div class="modal-foot">' +
-        '<a class="btn btn-outline" href="' + CATALOGUE + '" download>' + I.download + ' Download Catalogue</a>' +
+        '<a class="btn btn-outline" href="' + (p.brochure || CATALOGUE) + '" download>' + I.download + (p.brochure ? ' Download Brochure' : ' Download Catalogue') + '</a>' +
         '<button class="btn btn-primary" data-quote-open="' + p.key + '">Get Quote</button>' +
       '</div>';
   }
@@ -174,7 +197,9 @@
     return '<label class="qf-field' + (opts.full ? ' full' : '') + '"><span>' + label + req + '</span>' + ctrl + '</label>';
   }
   function quoteHTML(p) {
-    const sizes = ['Select size', '2 RFT', '3 RFT', '4 RFT', '5 RFT', '6 RFT', '7 RFT', '8 RFT', '9 RFT', '10 RFT'];
+    const sizes = p.key === 'duraroof'
+      ? ['Select size', '4 ft', '5 ft', '6 ft', '7 ft', '8 ft', '9 ft', '10 ft', '11 ft', '12 ft']
+      : ['Select size', '2 RFT', '3 RFT', '4 RFT', '5 RFT', '6 RFT', '7 RFT', '8 RFT', '9 RFT', '10 RFT'];
     return '' +
       '<div class="qf">' +
         '<aside class="qf-side">' +
@@ -199,11 +224,11 @@
           '<section class="qf-sec">' +
             '<h3><b>01.</b> Product Information</h3>' +
             '<div class="qf-grid">' +
-              field('Product name', 'product', 'select', { full: true, required: true, value: p.product, options: ['Anwar Cement Sheet', 'Anwar Colored Cement Sheet'] }) +
-              field('Size (RFT)', 'size', 'select', { required: true, options: sizes }) +
+              field('Product name', 'product', 'select', { full: true, required: true, value: p.product, options: ['Anwar Cement Sheet', 'Anwar Colored Cement Sheet', 'Anwar DuraRoof'] }) +
+              field(p.key === 'duraroof' ? 'Sheet length' : 'Size (RFT)', 'size', 'select', { required: true, options: sizes }) +
               field('Colour', 'colour', 'select', { options: ['Select colour', 'Natural Grey', 'Red', 'Blue', 'Green'] }) +
               field('Quantity (pcs)', 'qty', 'number', { placeholder: 'Enter pieces', min: 1 }) +
-              field('Roof type', 'type', 'select', { value: ['Residential home', 'Animal husbandry', 'Industrial building'].includes(p.label) ? p.label : 'Residential home', options: ['Residential home', 'Animal husbandry', 'Industrial building'] }) +
+              field('Roof type', 'type', 'select', { value: ['Residential home', 'Animal husbandry', 'Industrial building'].includes(p.label) ? p.label : (p.key === 'duraroof' ? 'Industrial building' : 'Residential home'), options: ['Residential home', 'Animal husbandry', 'Industrial building'] }) +
               field('Additional products', 'extra', 'textarea', { full: true, placeholder: 'Product name, size, quantity (e.g. ridge panel, hook bolts)' }) +
             '</div>' +
           '</section>' +
