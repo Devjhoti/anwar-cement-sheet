@@ -1023,8 +1023,8 @@ html.is-loading .hero-slide.is-active .hero-copy > * { animation-play-state: pau
 .logo-track { display: flex; width: max-content; animation: marquee 55s linear infinite; }
 .logo-marquee.rev .logo-track { animation-direction: reverse; }
 .logo-marquee:hover .logo-track { animation-play-state: paused; }
-.logo-track img { height: 74px; width: auto; margin-right: 14px; border-radius: 12px; border: 1px solid var(--line); background: #fff; filter: grayscale(1); opacity: .7; transition: filter .3s, opacity .3s, transform .3s, box-shadow .3s; }
-.logo-track img:hover { filter: none; opacity: 1; transform: scale(1.08); box-shadow: var(--shadow); }
+.logo-track img { height: 74px; width: auto; margin-right: 14px; border-radius: 12px; border: 1px solid var(--line); background: #fff; transition: transform .3s, box-shadow .3s; }
+.logo-track img:hover { transform: scale(1.08); box-shadow: var(--shadow); }
 @keyframes marquee { to { transform: translateX(-50%); } }
 /* --- testimonial spotlight slider --- */
 .tslides { display: grid; }
