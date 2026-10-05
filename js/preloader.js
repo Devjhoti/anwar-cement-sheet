@@ -66,7 +66,7 @@
   const particles = [];
   let start = null, lastTick = -1, burstDone = false, typed = 0, finished = false;
   const word1 = 'ANWAR', word2 = 'CEMENT SHEET';
-  const logoImg = new Image(); logoImg.src = 'assets/logo-512.png';
+  const logoImg = new Image(); logoImg.src = 'assets/logo-white.png';
   const ease = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const prog = (t, r) => clamp((t - r[0]) / (r[1] - r[0]), 0, 1);

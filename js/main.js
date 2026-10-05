@@ -104,7 +104,7 @@
       text: 'A cooler, drier and quieter shed that lowers heat stress, so cattle and poultry stay calm and productive.',
       image: 'assets/cat-farm.jpg', page: 'farm.html' },
     { key: 'industrial', label: 'Industrial building', title: 'Industrial Building',
-      text: 'Long spans, fire resistance and consistent factory quality for warehouses, workshops and factories.',
+      text: 'Anwar DuraRoof, our 6 mm industrial sheet: fire resistant, rust-free and built for factories and warehouses.',
       image: 'assets/cat-industrial.jpg', page: 'industrial.html' }
   ];
   const stage = document.getElementById('cfStage');
